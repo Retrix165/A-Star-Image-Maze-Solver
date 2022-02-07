@@ -20,6 +20,7 @@ Conversion Table (Color/Color Name/Symbol/Symbol Name):
 #Import Image Class from PIL
 from PIL import Image
 
+
 #Pixel to Symbol Function
 def _pix_to_sym(col: tuple) -> str:
 
@@ -107,25 +108,25 @@ def print_mat(mat: list):
 if __name__ == "__main__":
 
     print("Running ImageConvert Module Diagnostics:")
-    print("\tOpening Diagnostic Maze and Converting to Matrix: ",end="")
+    print("\tOpening Diagnostic Maze and Converting to Matrix: ", end="")
 
     image = Image.open("../TestMazes/DiagnosticMaze.png")
 
     matrix = img_to_mat(image)
 
     print("Success!")
-    print("\tPrinting Test Matrix: ",end="")
+    print("\tPrinting Test Matrix: ", end="")
 
     print_mat(matrix)
 
     print("Success!")
-    print("\tConverting Test Matrix Back to Image: ",end="")
+    print("\tConverting Test Matrix Back to Image: ", end="")
 
     test_image = mat_to_img(matrix)
 
     print("Success!")
 
-    print("\tShowing Result Image: ",end="")
+    print("\tShowing Result Image: ", end="")
 
     test_image.show()
 
