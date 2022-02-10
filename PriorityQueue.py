@@ -14,20 +14,21 @@ Purpose:
 from heapq import heappush, heappop
 
 
-class PriorityQueue:
+class PQ:
 
-    #Constructor for PriorityQueue Class
+    #Constructor for PQ Class
     def __init__(self):
-        self.elements = []
+        self._elements = []
 
 
     #Push Function
     def push(self, element):
-        return heappush(self.elements,element)
+        return heappush(self._elements,element)
 
 
     #Pop Function
     def pop(self):
-        return heappop(self.elements)
+        return heappop(self._elements)
 
-
+    def __bool__(self):
+        return len(self._elements) > 0
