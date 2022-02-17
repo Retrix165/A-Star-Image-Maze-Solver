@@ -68,17 +68,37 @@ class Coordinate:
         self.f = self._calculate_f()
 
 
+    #Check if is Goal Position
+    def is_goal(self):
+
+        return Coordinate.goal_x == self.x and Coordinate.goal_y == self.y
+
+
     #Object Comparison (for PriorityQueue Sorting) Function
     def __lt__(self,other):
 
         if other is None:
             raise Exception("None Other Coordinate Given")
 
+        if not isinstance(other,Coordinate):
+            raise ValueError("Unfit Comparison between Coordinate and Non-Coordinate")
+
         return self.f < other.f
+
+
+    #Object Comparison (for in/not in Operators) Function
+    def __eq__(self,other):
+
+        if other is None or not isinstance(other,Coordinate):
+            return False
+
+        return other.x == self.x and other.y == self.y
 
 
     #String Typecast Function
     def __str__(self):
+
+        #Parent attribute not listed to prevent recursive loop
         return "x: {} y: {} data: {} g: {} h: {} f: {}".format(self.x, self.y, self.data, self.g, self.h, self.f)
 
 
@@ -98,6 +118,20 @@ if __name__ == "__main__":
     print("\tComparing Two Coordinate Objects: ", end= "")
 
     assert(coord_1 < coord_2)
+
+    assert(coord_1 == coord_2)
+
+    coord_1.x = 100
+
+    assert(not (coord_1 == coord_2))
+
+    coord_1.x = 5
+
+    list_coord = Coordinate(5,10,"Testicles: Hero of Troy")
+
+    test_list = [list_coord]
+
+    assert(coord_1 in test_list)
 
     print("Success!")
     print("\tUpdating Parent & Cost of Coordinate Object: ", end= "")
