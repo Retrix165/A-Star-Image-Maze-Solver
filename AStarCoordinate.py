@@ -155,4 +155,14 @@ if __name__ == "__main__":
     assert(coord_1 < coord_2)
 
     print("Success!")
+    print("\tCheck if Coordinates are at Goal Position: ",end="")
+
+    assert(not coord_1.is_goal())
+
+    Coordinate.goal_x = 1
+    Coordinate.goal_y = 1
+
+    assert(coord_1.is_goal())
+
+    print("Success!")
 
